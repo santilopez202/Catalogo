@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distribuidora de Aseo para Bebés</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Incluir la biblioteca de SheetJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Distribuidora de Aseo para Bebés</h1><br>
+            <nav>
+                <ul>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="bienvenida">
+        <div class="container">
+            <h2>Bienvenidos a nuestro catálogo de productos</h2><br>
+            <p>En nuestra distribuidora ofrecemos productos de alta calidad para el aseo y cuidado de tu bebé. ¡Confía en nosotros para lo mejor!</p>
+        </div>
+    </section>
+
+    <!-- Sección para cargar el archivo Excel -->
+    <section id="cargar-excel">
+        <div class="container">
+            <h2>Cargar archivo Excel</h2>
+            <input type="file" id="inputExcel" />
+            <button id="leerExcel">Leer Excel</button>
+        </div>
+    </section>
+
+    <section id="productos">
+        <div class="container">
+            <h2>Productos</h2>
+
+            <!-- Filtro de Productos -->
+            <div class="filtros">
+                <h3>Filtrar por categoría</h3><br>
+                <form id="filtro-form">
+                    <select name="categoria" id="categoria">
+                        <option value="todos">Todos</option>
+                        <option value="champu">Champú</option>
+                        <option value="jabones">Jabones</option>
+                        <option value="toallitas">Toallitas</option>
+                        <option value="pañales">Pañales</option>
+                    </select>
+                    <button type="submit">Aplicar Filtro</button>
+                </form>
+            </div>
+
+            <!-- Lista de Productos -->
+            <div class="productos-lista" id="productos-lista">
+                <!-- Los productos se insertarán aquí después de leer el archivo Excel -->
+            </div>
+        </div>
+    </section>
+
+    <section id="nosotros">
+        <div class="container">
+            <h2>Nosotros</h2>
+            <p>Somos una empresa comprometida con la distribución de productos de aseo para bebés, asegurándonos de ofrecer productos de la más alta calidad para el cuidado y bienestar de tu pequeño.</p>
+        </div>
+    </section>
+
+    <section id="contacto">
+        <div class="container">
+            <h2>Contacto</h2>
+            <p>Si tienes preguntas, contáctanos:</p>
+            <ul>
+                <li>Email: aaaaaaaa</li>
+                <li>Teléfono: 123-456-789</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Distribuidora Cascanueces. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Función para leer el archivo Excel y mostrar los productos
+        document.getElementById('leerExcel').addEventListener('click', function(e) {
+            const archivo = document.getElementById('inputExcel').files[0];
+            if (!archivo) {
+                alert("Por favor selecciona un archivo Excel.");
+                return;
+            }
+
+            const lector = new FileReader();
+            lector.onload = function(event) {
+                const data = event.target.result;
+                const libro = XLSX.read(data, { type: 'binary' });
+
+                // Convertir la primera hoja a JSON
+                const hoja = libro.Sheets[libro.SheetNames[0]];
+                const json = XLSX.utils.sheet_to_json(hoja);
+                
+                // Mostrar los datos en consola o procesarlos
+                console.log(json);
+
+                // Aquí puedes insertar los datos en tu página web
+                mostrarDatos(json);
+            };
+            lector.readAsBinaryString(archivo);
+        });
+
+        // Función para mostrar los productos en la página web
+        function mostrarDatos(datos) {
+            const contenedor = document.getElementById('productos-lista');
+            contenedor.innerHTML = '';  // Limpiar la lista de productos
+
+            datos.forEach(function(fila) {
+                const divProducto = document.createElement('div');
+                divProducto.classList.add('producto');
+                
+                const imagen = document.createElement('img');
+                imagen.src = fila.Imagen;  // Suponiendo que hay una columna 'Imagen'
+                imagen.alt = fila.Nombre;  // Suponiendo que hay una columna 'Nombre'
+                
+                const nombre = document.createElement('h3');
+                nombre.textContent = fila.Nombre;
+
+                const descripcion = document.createElement('p');
+                descripcion.textContent = fila.Descripcion;  // Suponiendo que hay una columna 'Descripcion'
+
+                divProducto.appendChild(imagen);
+                divProducto.appendChild(nombre);
+                divProducto.appendChild(descripcion);
+
+                contenedor.appendChild(divProducto);
+            });
+        }
+    </script>
+</body>
+</html>

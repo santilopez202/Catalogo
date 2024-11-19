@@ -1,0 +1,193 @@
+/* Estilos Generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Estilos del encabezado */
+header {
+    background-color: #ffcccb;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #fff;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Sección de bienvenida */
+#bienvenida {
+    background-color: #ffe4e1;
+    padding: 40px 0;
+    text-align: center;
+}
+
+#bienvenida h2 {
+    font-size: 2em;
+    color: #ff6f61;
+}
+
+#bienvenida p {
+    font-size: 1.2em;
+    color: #666;
+}
+
+/* Filtros */
+.filtros {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.filtros select {
+    padding: 10px;
+    font-size: 1.1em;
+    margin-right: 10px;
+}
+
+.filtros button {
+    padding: 10px 20px;
+    font-size: 1.1em;
+    background-color: #ff6f61;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.filtros button:hover {
+    background-color: #ff5a4a;
+}
+
+/* Estilos de los productos */
+#productos {
+    padding: 40px 0;
+    background-color: #fff;
+}
+
+#productos h2 {
+    text-align: center;
+    font-size: 2.5em;
+    color: #ff6f61;
+    margin-bottom: 20px;
+}
+
+.productos-lista {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.producto {
+    text-align: center;
+    width: 30%;
+    margin-bottom: 30px;
+}
+
+.producto img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.producto h3 {
+    margin: 15px 0;
+    font-size: 1.5em;
+    color: #ff6f61;
+}
+
+.producto p {
+    font-size: 1.1em;
+    color: #666;
+}
+
+/* Sección de Nosotros */
+#nosotros {
+    background-color: #ffe4e1;
+    padding: 40px 0;
+    text-align: center;
+}
+
+#nosotros h2 {
+    font-size: 2.5em;
+    color: #ff6f61;
+    margin-bottom: 20px;
+}
+
+#nosotros p {
+    font-size: 1.2em;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Sección de contacto */
+#contacto {
+    padding: 40px 0;
+    background-color: #fff;
+    text-align: center;
+}
+
+#contacto h2 {
+    font-size: 2.5em;
+    color: #ff6f61;
+    margin-bottom: 20px;
+}
+
+#contacto p {
+    font-size: 1.2em;
+    color: #666;
+}
+
+#contacto ul {
+    list-style: none;
+    padding: 0;
+    font-size: 1.2em;
+}
+
+#contacto ul li {
+    margin: 10px 0;
+}
+
+/* Estilos del pie de página */
+footer {
+    background-color: #ffcccb;
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer p {
+    font-size: 1em;
+    color: #fff;
+}
